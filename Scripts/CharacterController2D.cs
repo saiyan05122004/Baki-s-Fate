@@ -4,8 +4,9 @@ using System.Collections;
 using UnityEngine.Events;
 
 
-public class CharacterController2D : MonoBehaviour
+public class CharacterController2D : MonoBehaviour // Механика управления
 {
+    //Добавление переменных и ссылок
     private Rigidbody2D Player;
     public float speed;
     public float jump;
@@ -18,7 +19,7 @@ public class CharacterController2D : MonoBehaviour
     public UnityEvent OnLandEvent;
 
 
-    // For determining which way the player is currently facing.
+    
     private Vector3 m_Velocity = Vector3.zero;
 
 
@@ -27,36 +28,39 @@ public class CharacterController2D : MonoBehaviour
     bool jumpCheck = false;
 
 
-    void Start()
+    void Start() 
     {
-        Player = GetComponent<Rigidbody2D>();
+        Player = GetComponent<Rigidbody2D>(); //Получаем доступ к компоненту Rigidbody2D Игрока
     }
-    void Update()
+    void Update() 
+        //Код с условием, для поворота игрока в сторону куда он движется (ссылка private void Flip)
     {
         if (Input.GetAxis("Horizontal") != 0)
         {
             Flip();
         }
 
-
+         //Проверка нахождения игрока на земле и загрузка анимации
         if (Input.GetButtonDown("Jump"))
         {
             jumpCheck = true;
             animator.SetBool("IsJumping", true);
         }
+        
     }
 
-    void FixedUpdate()
+    void FixedUpdate() 
     {
+        // Код для прыжка Игрока и проверки (находится ли он на земле).
         Player.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * speed, Player.velocity.y);
 
-        if (Input.GetKeyDown(KeyCode.Space) && grounded)
+        if (Input.GetKeyDown(KeyCode.Space) && grounded) // Условие с вводом данных
         {
             Player.velocity = new Vector2(0, 5f * jump);
 
         }
-        grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, ground);
-        //animation
+        grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, ground); 
+        
         float move = Input.GetAxis("Horizontal");
         animator.SetFloat("Speed", Mathf.Abs(move));
 
@@ -64,6 +68,7 @@ public class CharacterController2D : MonoBehaviour
 
 
     }
+    // Проверка в какую сторону смотрит игрок
     private void Flip()
     {
         if (Input.GetAxisRaw("Horizontal") == 1)
