@@ -1,11 +1,11 @@
 using UnityEngine;
 
-namespace KaizoTrap
-{
-    public class Parallax : MonoBehaviour
-    {
+
+    public class Parallax : MonoBehaviour // Создаем Паралакс эффект для фона 
+    { 
+        // Добавление переменных и ссылок 
         private float startPos, length;
-        public new GameObject camera;
+        public new GameObject camera; // Добвавить камеру
         public float parallaxEffect;
 
         void Start()
@@ -15,7 +15,8 @@ namespace KaizoTrap
         }
 
         void Update()
-        {
+        { 
+            //Движение фона относительно камере
             float temp = camera.transform.position.x * (1 - parallaxEffect);
             float dist = camera.transform.position.x * parallaxEffect;
 
@@ -27,4 +28,3 @@ namespace KaizoTrap
                 startPos -= length;
         }
     }
-}
