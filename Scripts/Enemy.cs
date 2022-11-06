@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour // Получения урона и унич�
     void Die()
     
     {
-        Debug.Log("Enemy died!");
+        Debug.Log("Enemy died!"); // Выводим в консоль о унчтожении врага
         Destroy(this.gameObject); // Уничтожение объекта
     }
 }
