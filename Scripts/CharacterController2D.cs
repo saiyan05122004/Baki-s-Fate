@@ -44,7 +44,7 @@ public class CharacterController2D : MonoBehaviour // Механика упра�
         if (Input.GetButtonDown("Jump"))
         {
             jumpCheck = true;
-            animator.SetBool("IsJumping", true);
+            animator.SetBool("IsJumping", false);
         }
         
     }
