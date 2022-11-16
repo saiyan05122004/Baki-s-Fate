@@ -52,7 +52,7 @@ public class CharacterController2D : MonoBehaviour // Механика упра�
     void FixedUpdate() 
     {
         // Код для прыжка Игрока и проверки (находится ли он на земле).
-        Player.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * speed, Player.velocity.x , z);
+        Player.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * speed, Player.velocity.x);
 
         if (Input.GetKeyDown(KeyCode.Space) && grounded) // Условие с вводом данных
         {
